@@ -75,7 +75,6 @@
     -webkit-tap-highlight-color:transparent;
   }
 
-  /* Ảnh & icon không bị kéo/thả */
   img,svg{ -webkit-user-drag:none; user-drag:none; pointer-events:auto; }
   svg{ pointer-events:none; }
   a,button{ cursor:pointer; }
@@ -742,14 +741,13 @@
   }
 
   /* ======================================================
-     JOURNEY — layout mới: rail phát sáng + card watermark
+     JOURNEY
      ====================================================== */
   .journey{
     position:relative;
     padding-left:32px;
   }
 
-  /* Rail gradient phía sau các node */
   .journey::before{
     content:"";
     position:absolute;
@@ -763,7 +761,6 @@
     z-index:0;
   }
 
-  /* Ánh sáng chạy dọc rail */
   .journey::after{
     content:"";
     position:absolute;
@@ -791,7 +788,6 @@
   }
   .journey-item:last-child{ padding-bottom:0; }
 
-  /* Node tròn phát sáng trên rail */
   .journey-node{
     position:absolute;
     left:-32px; top:20px;
@@ -839,7 +835,6 @@
     box-shadow:0 0 8px rgba(181,42,28,.7);
   }
 
-  /* Card cột mốc */
   .journey-card{
     --cut:16px;
     position:relative;
@@ -859,7 +854,6 @@
     transition:transform .35s cubic-bezier(.2,.8,.2,1), filter .35s;
   }
 
-  /* Dải accent bên trái */
   .journey-card::before{
     content:"";
     position:absolute;
@@ -876,23 +870,23 @@
     background:linear-gradient(180deg, var(--red), #7a1a10);
   }
 
-  /* Số thứ tự lớn dạng watermark */
+  /* WATERMARK ngày — giảm size để "17/9", "25/10" vừa khung */
   .journey-card::after{
     content:attr(data-step);
     position:absolute;
-    right:6px; bottom:-22px;
+    right:4px; bottom:-16px;
     font-family:var(--font-black);
     font-weight:900;
-    font-size:86px;
+    font-size:64px;
     line-height:1;
-    letter-spacing:-4px;
+    letter-spacing:-2px;
+    white-space:nowrap;
     color:rgba(217,56,40,.06);
     pointer-events:none;
     z-index:0;
     transition:color .4s, transform .4s;
   }
 
-  /* Hàng meta: tag + ngày */
   .journey-meta{
     position:relative;
     z-index:1;
@@ -903,14 +897,15 @@
     flex-wrap:wrap;
   }
 
+  /* TAG — font GFF-Bold thường */
   .journey-tag{
     display:inline-flex;
     align-items:center;
     padding:4px 10px;
-    font-family:var(--font-black);
-    font-weight:900;
-    font-size:9px;
-    letter-spacing:1.4px;
+    font-family:var(--font-heading);
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:1.6px;
     line-height:1;
     color:#fff;
     clip-path:polygon(
@@ -958,7 +953,6 @@
     color:var(--ink);
   }
 
-  /* Hover */
   .journey-item:hover .journey-card{
     transform:translateX(6px);
     filter:drop-shadow(0 12px 26px rgba(217,56,40,.16));
@@ -978,7 +972,7 @@
       0 0 20px 4px rgba(217,56,40,.45);
   }
 
-  /* QR — giữ nguyên bản đã sửa */
+  /* IDENTITY */
   .identity-card{
     --cut:24px;
     position:relative;
@@ -994,16 +988,6 @@
       0 var(--cut)
     );
     filter:drop-shadow(0 16px 32px rgba(15,23,42,0.07));
-  }
-
-  .id-label{
-    font-family:var(--font-heading);
-    font-weight:700;
-    font-size:11px;
-    letter-spacing:3px;
-    color:var(--red);
-    margin-bottom:10px;
-    text-align:center;
   }
 
   .id-title{
@@ -1243,7 +1227,6 @@
       padding-left:14px;
       padding-right:14px;
       padding-bottom:6px;
-      /* giữ luôn việc dịch lên trên mobile */
       padding-top:clamp(14px, 4vh, 34px);
     }
     body.expanded .hero{ padding-top:10px; }
@@ -1268,7 +1251,6 @@
     .intro-card{ padding:24px 20px; --cut:16px; }
     .intro-lead{ font-size:15px; }
 
-    /* Journey mobile */
     .journey{ padding-left:28px; }
     .journey::before{ left:9px; }
     .journey::after { left:8px; }
@@ -1282,8 +1264,13 @@
       --cut:14px;
       padding:14px 18px 16px 17px;
     }
-    .journey-card::after{ font-size:68px; right:4px; bottom:-16px; }
-    .journey-tag{ font-size:8.5px; letter-spacing:1.2px; padding:3px 8px; }
+    .journey-card::after{
+      font-size:48px;
+      right:3px;
+      bottom:-10px;
+      letter-spacing:-1.5px;
+    }
+    .journey-tag{ font-size:9px; letter-spacing:1.4px; padding:3px 8px; }
     .journey-date{ font-size:9.5px; letter-spacing:1px; padding:2px 6px; }
     .journey-title{ font-size:14px; }
 
@@ -1439,7 +1426,7 @@
         </div>
       </section>
 
-      <!-- 02 — HÀNH TRÌNH (layout mới) -->
+      <!-- 02 -->
       <section id="hanh-trinh" style="display:none">
         <div class="section-head">
           <span class="num">02</span>
@@ -1452,7 +1439,7 @@
         <div class="journey">
           <div class="journey-item">
             <span class="journey-node" aria-hidden="true"></span>
-            <div class="journey-card" data-step="01">
+            <div class="journey-card" data-step="1/9">
               <div class="journey-meta">
                 <span class="journey-tag tag-start">KHỞI ĐẦU</span>
                 <span class="journey-date">01.09.2026</span>
@@ -1463,7 +1450,7 @@
 
           <div class="journey-item">
             <span class="journey-node" aria-hidden="true"></span>
-            <div class="journey-card" data-step="02">
+            <div class="journey-card" data-step="17/9">
               <div class="journey-meta">
                 <span class="journey-tag tag-mid">THÀNH TỰU</span>
                 <span class="journey-date">17.09.2026</span>
@@ -1474,7 +1461,7 @@
 
           <div class="journey-item">
             <span class="journey-node" aria-hidden="true"></span>
-            <div class="journey-card" data-step="03">
+            <div class="journey-card" data-step="25/10">
               <div class="journey-meta">
                 <span class="journey-tag tag-end">CỘT MỐC</span>
                 <span class="journey-date">25.10.2026</span>
@@ -1496,7 +1483,6 @@
         </div>
 
         <div class="identity-card">
-          <div class="id-label">DIGITAL IDENTITY</div>
           <h3 class="id-title">Kết nối <span>Azerst</span></h3>
 
           <div class="qr-grid">
@@ -1534,25 +1520,17 @@
   </div>
 
   <script>
-    /* ==========================================================
-       CHẶN SAO CHÉP CHỮ — user-select + JS
-       (không ảnh hưởng click link, click nút, gõ phím form)
-       ========================================================== */
     (function () {
-      // Chặn menu chuột phải
       document.addEventListener('contextmenu', e => e.preventDefault(), { passive:false });
 
-      // Chặn copy / cut / selectstart
       ['copy','cut','selectstart','dragstart'].forEach(evt => {
         document.addEventListener(evt, e => {
           const tag = (e.target && e.target.tagName || '').toLowerCase();
-          // vẫn cho phép select/drag trong input, textarea, contenteditable (nếu có)
           if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
           e.preventDefault();
         }, { passive:false });
       });
 
-      // Chặn phím tắt: Ctrl/Cmd + C, Ctrl/Cmd + X, Ctrl/Cmd + A, Ctrl/Cmd + U (view-source)
       document.addEventListener('keydown', e => {
         const tag = (e.target && e.target.tagName || '').toLowerCase();
         if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
@@ -1564,11 +1542,6 @@
           e.preventDefault();
         }
       }, { passive:false });
-
-      // iOS Safari — chặn long-press callout trên ảnh
-      document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('touchstart', () => {}, { passive:true });
-      });
     })();
 
     (function () {
